@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\CdrRequest;
+use Illuminate\Http\JsonResponse;
 
 class RateController extends Controller
 {
-    public function rate()
+    /**
+     * @param CdrRequest $request
+     * @return JsonResponse
+     */
+    public function applyRateToCdr(CdrRequest $request): JsonResponse
     {
         return response()->json(['message' => "test if it is successful"], 200);
     }

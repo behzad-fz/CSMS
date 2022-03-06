@@ -15,7 +15,7 @@ class RateTest extends TestCase
      */
     public function test_endpoint_not_found()
     {
-        $this->post('wrong/rate/endpoint')->assertStatus(404);
+        $this->json('POST', 'wrong/rate/endpoint')->assertStatus(404);
     }
 
     /**
@@ -25,6 +25,49 @@ class RateTest extends TestCase
      */
     public function test_endpoint_exposed()
     {
-        $this->post('/rate')->assertStatus(200);
+        $this->assertNotEquals(404, $this->json('POST','/rate')->getStatusCode());
+    }
+
+    /**
+     *  test user gets validation error with 422 status code if input is not as expected.
+     *
+     * @return void
+     */
+    public function test_user_gets_validation_error_if_not_given_right_input()
+    {
+        $this->json('POST','/rate')
+            ->assertStatus(422)
+            ->assertJson([
+                'message' => "The rate field is required. (and 8 more errors)",
+                'errors' => [
+                    "rate" => [
+                        "The rate field is required."
+                    ],
+                        "rate.energy" => [
+                        "The rate.energy field is required."
+                    ],
+                        "rate.time" => [
+                        "The rate.time field is required."
+                    ],
+                        "rate.transaction" => [
+                        "The rate.transaction field is required."
+                    ],
+                        "cdr" => [
+                        "The cdr field is required."
+                    ],
+                        "cdr.meterStart" => [
+                        "The cdr.meter start field is required."
+                    ],
+                        "cdr.timestampStart" => [
+                        "The cdr.timestamp start field is required."
+                    ],
+                        "cdr.meterStop" => [
+                        "The cdr.meter stop field is required."
+                    ],
+                        "cdr.timestampStop" => [
+                        "The cdr.timestamp stop field is required."
+                    ]
+                ]
+            ]);
     }
 }

@@ -12,4 +12,4 @@ use App\Http\Controllers\RateController;
 |
 */
 
-Route::post('/rate', [RateController::class, 'rate']);
+Route::post('/rate', [RateController::class, 'applyRateToCdr']);
