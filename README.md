@@ -52,3 +52,17 @@ Make an http request to the following endpoint
         }
     }
 ```
+## Example http request
+```
+    POST /rate HTTP/1.1
+    Host: localhost:8089
+    Accept: application/json
+    Content-Type: application/json
+    Content-Length: 203
+    
+    {
+    "rate": { "energy": 1.3, "time": 8, "transaction": 8 },
+    "cdr": { "meterStart": 1204307, "timestampStart": "2021-04-05T10:04:00Z", "meterStop": 1215230, "timestampStop": "2021-04-05T11:27:00Z" }
+    }
+```
+ 
