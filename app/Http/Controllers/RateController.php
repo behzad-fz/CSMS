@@ -3,16 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CdrRequest;
-use Illuminate\Http\JsonResponse;
+use App\Http\Resources\InvoiceResource;
+use App\Services\RateCalculator;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class RateController extends Controller
 {
+    public function __construct(
+        private RateCalculator $rateCalculator,
+    ) {}
+
     /**
      * @param CdrRequest $request
-     * @return JsonResponse
+     * @return JsonResource
      */
-    public function applyRateToCdr(CdrRequest $request): JsonResponse
+    public function applyRateToCdr(CdrRequest $request): JsonResource
     {
-        return response()->json(['message' => "test if it is successful"], 200);
+        return new InvoiceResource($this->rateCalculator->getInvoice($request));
     }
 }
