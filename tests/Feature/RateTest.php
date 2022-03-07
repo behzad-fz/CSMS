@@ -70,4 +70,37 @@ class RateTest extends TestCase
                 ]
             ]);
     }
+
+    /**
+     *  test user gets a detailed receipt given correct input.
+     *
+     * @return void
+     */
+    public function test_user_gets_detailed_receipt_given_correct_input()
+    {
+        $input = [
+            "rate" => [
+                "energy" => 0.3,
+                "time" => 2,
+                "transaction"=>  1
+            ],
+            "cdr" => [
+                "meterStart" => 1204307,
+                "timestampStart" => "2021-04-05T10:04:00Z",
+                "meterStop" => 1215230,
+                "timestampStop" => "2021-04-05T11:27:00Z"
+            ]
+        ];
+
+        $this->json('POST','/rate', $input)
+            ->assertStatus(200)
+            ->assertJsonStructure([
+                "overall",
+                "components" => [
+                    "energy",
+                    "time",
+                    "transaction"
+                ]
+            ]);
+    }
 }
