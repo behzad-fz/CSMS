@@ -25,6 +25,11 @@ NOTICE: if your port 8089 is already in use, please set DOCKER_HTTP_PORT to free
 
 Now app should be alive on http://localhost:8089
 
+## Run Tests
+```
+~$ docker-compose exec php php artisan test
+```
+
 ## Usage
 Make an http request to the following endpoint
 ```
