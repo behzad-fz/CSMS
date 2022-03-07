@@ -3,3 +3,7 @@
 ## Requirements:
 - Docker
 - Docker-compose
+
+## Dockerized Environment:
+- NGINX
+- PHP-FPM
