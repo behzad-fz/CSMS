@@ -1,0 +1,43 @@
+{
+	"info": {
+		"_postman_id": "f9c23fa3-61c9-4a85-a306-e3622deae415",
+		"name": "CSMS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Invoice",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"rate\": { \n        \"energy\": 0.3,\n         \"time\": 2, \n         \"transaction\": 1 \n    },\n    \"cdr\": { \n        \"meterStart\": 1204307, \n        \"timestampStart\": \"2021-04-05T10:04:00Z\",\n         \"meterStop\": 1215230, \n         \"timestampStop\": \"2021-04-05T11:27:00Z\"\n    }\n}\n ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8089/rate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8089",
+					"path": [
+						"rate"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
