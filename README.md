@@ -31,7 +31,9 @@ Now app should be alive on http://localhost:8089
 ```
 
 ## Usage
-Make an http request to the following endpoint
+Make a http request to the following endpoint
+
+Notice: There is "postman_collection.json" file included in the project's root directory which contains a sample
 ```
 Url   : http://localhost:8089/rate
 Method: POST
