@@ -33,41 +33,41 @@ Now app should be alive on http://localhost:8089
 ## Usage
 Make an http request to the following endpoint
 ```
-    Url   : http://localhost:8089/rate
-    Method: POST
-    Parameters : {
-        "rate": {
-            "energy": fee per kwh,
-            "time": fee per hour, 
-            "transaction": fee per service
-        },
-        "cdr": { 
-            "meterStart": starting count of electericity meter, 
-            "timestampStart": strating process timestamp,
-            "meterStop": ending count of electericity meter,
-            "timestampStop": ending process timestamp 
-        }
+Url   : http://localhost:8089/rate
+Method: POST
+Parameters : {
+    "rate": {
+        "energy": fee per kwh,
+        "time": fee per hour, 
+        "transaction": fee per service
+    },
+    "cdr": { 
+        "meterStart": starting count of electericity meter, 
+        "timestampStart": strating process timestamp,
+        "meterStop": ending count of electericity meter,
+        "timestampStop": ending process timestamp 
     }
-    Response: {
-        "overall": #,
-        "components": {
-            "energy": #,
-            "time": #,
-            "transaction": #
-        }
+}
+Response: {
+    "overall": #,
+    "components": {
+        "energy": #,
+        "time": #,
+        "transaction": #
     }
+}
 ```
 ## Example http request
 ```
-    POST /rate HTTP/1.1
-    Host: localhost:8089
-    Accept: application/json
-    Content-Type: application/json
-    Content-Length: 203
-    
-    {
-    "rate": { "energy": 1.3, "time": 8, "transaction": 8 },
-    "cdr": { "meterStart": 1204307, "timestampStart": "2021-04-05T10:04:00Z", "meterStop": 1215230, "timestampStop": "2021-04-05T11:27:00Z" }
-    }
+POST /rate HTTP/1.1
+Host: localhost:8089
+Accept: application/json
+Content-Type: application/json
+Content-Length: 203
+
+{
+"rate": { "energy": 1.3, "time": 8, "transaction": 8 },
+"cdr": { "meterStart": 1204307, "timestampStart": "2021-04-05T10:04:00Z", "meterStop": 1215230, "timestampStop": "2021-04-05T11:27:00Z" }
+}
 ```
  
